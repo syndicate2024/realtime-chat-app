@@ -39,3 +39,26 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# config files
+/tsconfig.json
+/tailwind.config.ts
+/postcss.config.mjs
+/next.config.ts
+/eslint.config.mjs
+
+# public assets
+/public/*.svg
+
+# lock files
+/package-lock.json
+
+# styles
+/app/globals.css
+
+# pages
+/app/page.tsx
+/app/layout.tsx
+
+# documentation
+/README.md
