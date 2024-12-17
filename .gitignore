@@ -3,12 +3,8 @@
 # dependencies
 /node_modules
 /.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
+.pnp.js
+.yarn/install-state.gz
 
 # testing
 /coverage
@@ -28,10 +24,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# local env files
+.env*.local
 
 # vercel
 .vercel
@@ -40,25 +35,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# config files
-/tsconfig.json
-/tailwind.config.ts
-/postcss.config.mjs
-/next.config.ts
-/eslint.config.mjs
-
-# public assets
-/public/*.svg
-
-# lock files
-/package-lock.json
-
-# styles
-/app/globals.css
-
-# pages
-/app/page.tsx
-/app/layout.tsx
-
-# documentation
-/README.md
+# PWA files
+**/public/sw.js
+**/public/workbox-*.js
+**/public/worker-*.js
+**/public/sw.js.map
+**/public/workbox-*.js.map
+**/public/worker-*.js.map
