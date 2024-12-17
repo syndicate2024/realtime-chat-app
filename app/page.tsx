@@ -1,8 +1,7 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
-import { useState } from 'react';
+import { UserButton } from '@clerk/nextjs';
 
 export default function Home() {
-	return <Button>Click me</Button>;
+	return <UserButton />;
 }
