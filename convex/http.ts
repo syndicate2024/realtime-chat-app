@@ -36,14 +36,14 @@ const handleClerkWebhook = httpAction(async (ctx, req) => {
 
 	switch (event.type) {
 		case 'user.created':
-			const user = await ctx.runQuery(internal.user.get, {
-				clerkId: event.data.id,
-			});
+		case 'user.updated': {
+			const user = await ctx.runQuery(internal.user.get, { clerkId: event.data.id });
 
 			if (user) {
-				console.log(`Updating user ${event.data.id} with: ${event.data}`);
+				console.log(`User already exists: ${event.data.id}`);
+				return new Response(null, { status: 200 });
 			}
-		case 'user.updated': {
+
 			console.log('Creating/Updating User:', event.data.id);
 
 			await ctx.runMutation(internal.user.create, {

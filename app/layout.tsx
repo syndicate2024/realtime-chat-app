@@ -1,18 +1,11 @@
 'use client';
 
-import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { ConvexClientProvider } from '@/providers/ConvexClientProvider';
+import { Inter } from 'next/font/google';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
-const geistSans = Geist({
-	variable: '--font-geist-sans',
-	subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-	variable: '--font-geist-mono',
-	subsets: ['latin'],
-});
+const inter = Inter({ subsets: ['latin'] });
 
 export default function RootLayout({
 	children,
@@ -21,8 +14,10 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='en'>
-			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-				<ConvexClientProvider>{children}</ConvexClientProvider>
+			<body className={inter.className}>
+				<ConvexClientProvider>
+					<TooltipProvider>{children}</TooltipProvider>
+				</ConvexClientProvider>
 			</body>
 		</html>
 	);
