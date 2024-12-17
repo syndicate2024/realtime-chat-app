@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { useConversation } from '@/hooks/useConversation';
 import { useNavigation } from '@/hooks/useNavigation';
 import { UserButton } from '@clerk/nextjs';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@radix-ui/react-tooltip';
@@ -9,9 +10,12 @@ import Link from 'next/link';
 
 const MobileNav = () => {
 	const paths = useNavigation();
+	const { isActive } = useConversation();
+
+	if (isActive) return null;
 
 	return (
-		<Card className='fixed bottom-4 w-[calc(100vh-32px)] flex items-center h-16 p-2 lg:hidden'>
+		<Card className='fixed bottom-4 w-[calc(100vw-32px)] flex items-center h-16 p-2 lg:hidden'>
 			<nav className='w-full'>
 				<ul className='flex justify-evenly items-center'>
 					{paths.map((path, id) => {
@@ -19,7 +23,7 @@ const MobileNav = () => {
 							<li key={id} className='relative'>
 								<Link href={path.href}>
 									<Tooltip>
-										<TooltipTrigger>
+										<TooltipTrigger asChild>
 											<Button variant={path.active ? 'default' : 'outline'} size='icon'>
 												{path.icon}
 											</Button>
@@ -32,8 +36,8 @@ const MobileNav = () => {
 							</li>
 						);
 					})}
-					<li>
-						<UserButton />
+					<li className='flex items-center'>
+						<UserButton afterSignOutUrl='/' />
 					</li>
 				</ul>
 			</nav>

@@ -19,7 +19,7 @@ const DesktopNav = () => {
 							<li key={id} className='relative'>
 								<Link href={path.href}>
 									<Tooltip>
-										<TooltipTrigger>
+										<TooltipTrigger asChild>
 											<Button variant={path.active ? 'default' : 'outline'} size='icon'>
 												{path.icon}
 											</Button>
