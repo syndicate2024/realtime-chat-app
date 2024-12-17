@@ -13,7 +13,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Chat App",
+  title: "Clan Conversations",
   description: "Realtime chat app built using NextJS",
   generator: "Next.js",
   manifest: "/manifest.json",
