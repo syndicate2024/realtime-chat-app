@@ -1,11 +1,28 @@
-'use client';
-
+import type { Metadata, Viewport } from 'next';
+import { Inter } from 'next/font/google';
 import './globals.css';
 import { ConvexClientProvider } from '@/providers/ConvexClientProvider';
-import { Inter } from 'next/font/google';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { TooltipProvider } from '@/components/ui/tooltip';
+import { ThemeProvider } from '@/components/ui/theme/theme-provider';
+
 
 const inter = Inter({ subsets: ['latin'] });
+
+export const viewport: Viewport = {
+	themeColor: 'DodgerBlue',
+};
+
+export const metadata: Metadata = {
+	title: 'Chat App',
+	description: 'Realtime chat app built using NextJS',
+	generator: 'Next.js',
+	manifest: '/manifest.json',
+	authors: [{ name: 'Code Complete' }],
+	icons: [
+		{ rel: 'apple-touch-icon', url: 'icon-192x192.png' },
+		{ rel: 'icon', url: 'icon-192x192.png' },
+	],
+};
 
 export default function RootLayout({
 	children,
@@ -15,9 +32,16 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<body className={inter.className}>
-				<ConvexClientProvider>
-					<TooltipProvider>{children}</TooltipProvider>
-				</ConvexClientProvider>
+				<ThemeProvider
+					attribute='class'
+					defaultTheme='system'
+					enableSystem
+					disableTransitionOnChange
+				>
+					<ConvexClientProvider>
+						<TooltipProvider>{children}</TooltipProvider>
+					</ConvexClientProvider>
+				</ThemeProvider>
 			</body>
 		</html>
 	);
