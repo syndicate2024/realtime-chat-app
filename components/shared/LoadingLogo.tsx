@@ -1,4 +1,5 @@
-import Image from "next/image";
+import React from 'react';
+import Image from 'next/image';
 
 type Props = {
   size?: number;
@@ -10,11 +11,11 @@ export const LoadingLogo = ({ size = 100 }: Props) => {
       <Image
         src="/logo.png"
         alt="Logo"
-        priority={true} // Add priority for LCP
+        priority={true}
         width={size}
         height={size}
         className="animate-pulse duration-800"
-        style={{ width: 'auto', height: 'auto' }} // Maintain aspect ratio
+        style={{ width: 'auto', height: 'auto' }}
       />
     </div>
   );
