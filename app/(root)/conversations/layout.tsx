@@ -3,7 +3,7 @@
 import ItemList from "@/components/shared/item-list/ItemList";
 import { api } from "@/convex/_generated/api";
 import { useQuery } from "convex/react";
-import DMConversationItem from './DMConversationItem';
+import { DMConversationItem } from "./DMConversationItem";
 import { Loader2 } from "lucide-react";
 import CreateGroupDialog from "./_components/CreateGroupDialog";
 import GroupConversationItem from "./_components/GroupConversationItem";

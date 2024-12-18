@@ -7,23 +7,19 @@ export interface DMConversationItemProps {
     lastMessageSender?: string;
     lastMessageContent?: string;
     unseenCount: number;
-    // ... any other props
 }
 
-const DMConversationItem: React.FC<DMConversationItemProps> = ({
+export const DMConversationItem: React.FC<DMConversationItemProps> = ({
     id,
     username,
     imageUrl,
     lastMessageSender,
     lastMessageContent,
     unseenCount,
-    // ... other props
 }: DMConversationItemProps) => {
     return (
         <div>
             {/* Add your component JSX here */}
         </div>
     );
-};
-
-export default DMConversationItem; 
+}; 
