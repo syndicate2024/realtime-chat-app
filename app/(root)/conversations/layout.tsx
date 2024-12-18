@@ -7,12 +7,9 @@ import dynamic from 'next/dynamic';
 import { Loader2 } from "lucide-react";
 import CreateGroupDialog from "./_components/CreateGroupDialog";
 import GroupConversationItem from "./_components/GroupConversationItem";
+import DMConversationItem from "./DMConversationItem";
 
 type Props = React.PropsWithChildren<{}>;
-
-const DMConversationItem = dynamic(() => import('./DMConversationItem'), {
-  ssr: true,
-});
 
 const ConversationsLayout = ({ children }: Props) => {
   const conversations = useQuery(api.conversations.get);

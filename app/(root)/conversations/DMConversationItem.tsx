@@ -1,7 +1,7 @@
 import { Id } from "@/convex/_generated/dataModel";
 import React from 'react';
 
-type Props = {
+type DMConversationItemProps = {
     id: Id<"conversations">;
     username: string;
     imageUrl: string;
@@ -10,24 +10,21 @@ type Props = {
     unseenCount: number;
 }
 
-const DMConversationItem = (props: Props) => {
-    const {
-        id,
-        username,
-        imageUrl,
-        lastMessageSender,
-        lastMessageContent,
-        unseenCount,
-    } = props;
-    
+function DMConversationItem({
+    id,
+    username,
+    imageUrl,
+    lastMessageSender,
+    lastMessageContent,
+    unseenCount,
+}: DMConversationItemProps) {
     return (
         <div>
             <p>{username}</p>
-            <p>{id}</p>
+            <p>{lastMessageContent}</p>
+            {unseenCount > 0 && <span>{unseenCount}</span>}
         </div>
     );
-};
-
-DMConversationItem.displayName = 'DMConversationItem';
+}
 
 export default DMConversationItem; 
