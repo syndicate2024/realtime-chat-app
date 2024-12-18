@@ -1,7 +1,7 @@
 import { Id } from "@/convex/_generated/dataModel";
 import React from 'react';
 
-interface Props {
+type Props = {
     id: Id<"conversations">;
     username: string;
     imageUrl: string;
@@ -10,7 +10,7 @@ interface Props {
     unseenCount: number;
 }
 
-export default function DMConversationItem(props: Props) {
+const DMConversationItem = (props: Props) => {
     const {
         id,
         username,
@@ -23,6 +23,11 @@ export default function DMConversationItem(props: Props) {
     return (
         <div>
             <p>{username}</p>
+            <p>{id}</p>
         </div>
     );
-} 
+};
+
+DMConversationItem.displayName = 'DMConversationItem';
+
+export default DMConversationItem; 
