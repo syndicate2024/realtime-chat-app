@@ -25,20 +25,18 @@ const DesktopNav = () => {
               <li key={id} className="relative">
                 <Link href={path.href}>
                   <Tooltip>
-                    <TooltipTrigger asChild>
-                      <div>
-                        <Button
-                          size="icon"
-                          variant={path.active ? "default" : "outline"}
-                        >
-                          {path.icon}
-                        </Button>
-                        {path.count ? (
-                          <Badge className="absolute left-6 bottom-7 px-2">
-                            {path.count}
-                          </Badge>
-                        ) : null}
-                      </div>
+                    <TooltipTrigger>
+                      <Button
+                        size="icon"
+                        variant={path.active ? "default" : "outline"}
+                      >
+                        {path.icon}
+                      </Button>
+                      {path.count ? (
+                        <Badge className="absolute left-6 bottom-7 px-2">
+                          {path.count}
+                        </Badge>
+                      ) : null}
                     </TooltipTrigger>
                     <TooltipContent>
                       <p>{path.name}</p>

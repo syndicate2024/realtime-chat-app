@@ -13,13 +13,14 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "chat-app",
+  title: "Chat App",
   description: "Realtime chat app built using NextJS",
   generator: "Next.js",
   manifest: "/manifest.json",
+  authors: [{ name: "Code Complete" }],
   icons: [
     { rel: "apple-touch-icon", url: "icon-192x192.png" },
-    { rel: "icon", url: "favicon.ico" },
+    { rel: "icon", url: "icon-192x192.png" },
   ],
 };
 

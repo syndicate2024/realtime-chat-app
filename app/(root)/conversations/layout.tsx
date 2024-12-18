@@ -3,11 +3,10 @@
 import ItemList from "@/components/shared/item-list/ItemList";
 import { api } from "@/convex/_generated/api";
 import { useQuery } from "convex/react";
-import dynamic from 'next/dynamic';
+import DMConversationItem from "./_components/DMConversationItem";
 import { Loader2 } from "lucide-react";
 import CreateGroupDialog from "./_components/CreateGroupDialog";
 import GroupConversationItem from "./_components/GroupConversationItem";
-import DMConversationItem from "./DMConversationItem";
 
 type Props = React.PropsWithChildren<{}>;
 

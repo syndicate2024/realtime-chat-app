@@ -70,11 +70,3 @@ export const count = query({
     return requests.length;
   },
 });
-
-export const countRequests = query(async ({ db }) => {
-  const siteUrl = process.env.CONVEX_SITE_URL;
-  console.log(`Using Convex site URL: ${siteUrl}`);
-
-  const requests = await db.query("requests").collect();
-  return requests.length;
-});
