@@ -1,4 +1,5 @@
 import { Id } from "@/convex/_generated/dataModel";
+import React from 'react';
 
 export interface DMConversationItemProps {
     id: Id<"conversations">;
@@ -9,14 +10,16 @@ export interface DMConversationItemProps {
     unseenCount: number;
 }
 
-export const DMConversationItem: React.FC<DMConversationItemProps> = ({
-    id,
-    username,
-    imageUrl,
-    lastMessageSender,
-    lastMessageContent,
-    unseenCount,
-}: DMConversationItemProps) => {
+export const DMConversationItem = (props: DMConversationItemProps): React.JSX.Element => {
+    const {
+        id,
+        username,
+        imageUrl,
+        lastMessageSender,
+        lastMessageContent,
+        unseenCount,
+    } = props;
+    
     return (
         <div>
             {/* Add your component JSX here */}
