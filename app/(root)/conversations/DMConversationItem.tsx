@@ -10,7 +10,7 @@ export interface DMConversationItemProps {
     unseenCount: number;
 }
 
-export const DMConversationItem = (props: DMConversationItemProps): React.JSX.Element => {
+export function DMConversationItem(props: DMConversationItemProps) {
     const {
         id,
         username,
@@ -22,7 +22,8 @@ export const DMConversationItem = (props: DMConversationItemProps): React.JSX.El
     
     return (
         <div>
-            {/* Add your component JSX here */}
+            {/* Component content */}
+            <p>{username}</p>
         </div>
     );
-}; 
+} 
