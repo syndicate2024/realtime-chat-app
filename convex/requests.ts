@@ -70,3 +70,8 @@ export const count = query({
     return requests.length;
   },
 });
+
+export const countRequests = query(async ({ db }) => {
+  const requests = await db.query("requests").collect();
+  return requests.length;
+});
