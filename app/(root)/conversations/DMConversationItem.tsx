@@ -1,55 +1,62 @@
-import React from "react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
 import { Id } from "@/convex/_generated/dataModel";
-import DMConversationItem from "@/path/to/DMConversationItem"; // Update this to the actual path
+import { User } from "lucide-react";
+import Link from "next/link";
+import React from "react";
 
-function Layout({ conversations }: { conversations: any[] }) {
-    // Array to collect logs during the build step
-    const buildLogs: string[] = [];
+type Props = {
+  id: Id<"conversations">;
+  imageUrl: string;
+  username: string;
+  lastMessageSender?: string;
+  lastMessageContent?: string;
+  unseenCount: number;
+};
 
-    const renderedConversations = conversations.map((conversation, index) => {
-        try {
-            const id = conversation.conversation._id;
-            const username = conversation.otherMember?.username || "Unknown User";
-            const imageUrl = conversation.otherMember?.imageUrl || "placeholder-image-url";
-            const lastMessageSender = conversation.lastMessage?.sender || "Unknown";
-            const lastMessageContent = conversation.lastMessage?.content || "No content";
-            const unseenCount = conversation.unseenCount || 0;
+const DMConversationItem = ({
+  id,
+  imageUrl,
+  username,
+  lastMessageSender,
+  lastMessageContent,
+  unseenCount,
+}: Props) => {
+  return (
+    <Link href={`/conversations/${id}`} className="w-full">
+      <Card className="p-2 flex flex-row items-center justify-between">
+        <div className="flex flex-row items-center gap-4 truncate">
+          <Avatar>
+            <AvatarImage src={imageUrl} />
+            <AvatarFallback>
+              <User />
+            </AvatarFallback>
+          </Avatar>
+          <div className="flex flex-col truncate">
+            <h4 className="truncate">{username}</h4>
+            {lastMessageSender && lastMessageContent ? (
+              <span className="text-sm text-muted-foreground flex truncate overflow-ellipsis">
+                <p className="font-semibold">
+                  {lastMessageSender}
+                  {":"}&nbsp;
+                </p>
+                <p className="truncate overflow-ellipsis">
+                  {lastMessageContent}
+                </p>
+              </span>
+            ) : (
+              <p className="text-sm text-muted-foreground truncate">
+                Start the conversation!
+              </p>
+            )}
+          </div>
+        </div>
 
-            // Collecting debug info during build
-            buildLogs.push(
-                `Rendering DMConversationItem for index ${index}:
-                - id: ${id}
-                - username: ${username}
-                - imageUrl: ${imageUrl}
-                - lastMessageSender: ${lastMessageSender}
-                - lastMessageContent: ${lastMessageContent}
-                - unseenCount: ${unseenCount}`
-            );
+        {unseenCount ? <Badge>{unseenCount}</Badge> : null}
+      </Card>
+    </Link>
+  );
+};
 
-            return (
-                <DMConversationItem
-                    key={id || `fallback-key-${index}`}
-                    id={id || `fallback-id-${index}`} // Add fallback for undefined ID
-                    username={username}
-                    imageUrl={imageUrl}
-                    lastMessageSender={lastMessageSender}
-                    lastMessageContent={lastMessageContent}
-                    unseenCount={unseenCount}
-                />
-            );
-        } catch (error) {
-            // Log errors for debugging
-            buildLogs.push(`Error rendering DMConversationItem for index ${index}: ${error}`);
-            throw error; // Rethrow so the build process fails and logs are visible
-        }
-    });
-
-    // During build, output logs to help debug errors
-    if (typeof window === "undefined") {
-        console.error("Build Logs:\n", buildLogs.join("\n\n"));
-    }
-
-    return <div>{renderedConversations}</div>;
-}
-
-export default Layout;
+export default DMConversationItem;
