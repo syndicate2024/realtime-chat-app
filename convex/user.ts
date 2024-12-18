@@ -10,6 +10,7 @@ export const create = internalMutation({
     email: v.string(),
   },
   handler: async (ctx, args) => {
+    console.log(`Creating user with clerkId: ${args.clerkId}`);
     await ctx.db.insert("users", args);
   },
 });
